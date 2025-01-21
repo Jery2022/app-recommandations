@@ -1,9 +1,9 @@
-import { find, create } from '../models/meeting.model.js';
+import { findAll, create, findById, deleteOne, update } from '../models/meeting.model.js';
 import mongoose from 'mongoose';
 
 export async function getMeetings(req, res) {
     try {
-    const meetings = await find();
+    const meetings = await findAll();
     res.status(200).json(meetings);
 } catch (error) {
    // console.log(error);
@@ -12,7 +12,7 @@ export async function getMeetings(req, res) {
 }
 
 export async function setMeeting(req, res) {
-    console.log(req.body);
+   // console.log(req.body);
     if (!req.body.title || !req.body.date || !req.body.location) {
         return res.status(400).json({ message: "Données manquantes" });
     } 
@@ -42,20 +42,21 @@ export async function setMeeting(req, res) {
 }
 
 export async function editMeeting(req, res) {
-    const meeting = await MeetingModel.findById(req.params.id);
+    const meeting = await findById(req.params.id);
     if (!meeting) {
         return res.status(404).json({ message: "Réunion non trouvée !" });
     }   
-    const updateMeeting = await MeetingModel.findByIdAndUpdate(meeting, req.body, { new: true });
+    const updateMeeting = await update(meeting, req.body, { new: true });
+    console.log(updateMeeting);
     res.status(200).json(updateMeeting); 
 }
 
 export async function deleteMeeting(req, res) {
-    const meeting = await MeetingModel.findById(req.params.id);
+    const meeting = await findById(req.params.id);
     if (!meeting) {
         return res.status(404).json({ message: "Réunion non trouvée !" });
     }   
-    const dmeeting = await MeetingModel.deleteOne({ _id: req.params.id });
+    const dmeeting = await deleteOne({ _id: req.params.id });
     console.log(dmeeting);
-    res.status(200).json({ message: "La réunion avec l'ID "+req.params.id + " supprimé avec succès" }); 
+    res.status(200).json({ message: "La réunion avec l'ID : "+req.params.id + " a été supprimée avec succès" }); 
 }

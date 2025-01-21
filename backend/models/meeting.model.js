@@ -27,8 +27,8 @@ const MeetingSchema = new Schema({
 
 const Meeting = model('Meeting', MeetingSchema);
 
-export async function find() {
-    return await Meeting.findOne();
+export async function findAll() {
+    return await Meeting.find();
 }
 
 export async function create(meetingData) {
@@ -39,6 +39,11 @@ export async function create(meetingData) {
 export async function findById(id) {
     return await Meeting.findById(id);
 }
+
+export async function deleteOne(id) {
+    return await Meeting.deleteOne(id);
+}
+
 
 export async function update(id, meetingData) {
     return await Meeting.findByIdAndUpdate(id, meetingData, { new: true });

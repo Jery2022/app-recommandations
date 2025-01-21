@@ -35,9 +35,25 @@ UserSchema.pre('save', async function (next) {
 
 const User = model('User', UserSchema);
 
-export async function createUser(userData) {
+export async function findAll() {
+    return await User.find();
+}
+
+export async function create(userData) {
     const user = new User(userData);
     return await user.save();
+}
+
+export async function findById(id) {
+    return await User.findById(id);
+}
+
+export async function deleteOne(id) {
+    return await User.deleteOne(id);
+}
+
+export async function update(id, userData) {
+    return await User.findByIdAndUpdate(id, userData, { new: true });
 }
 
 export default User;

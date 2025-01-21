@@ -1,4 +1,5 @@
 import { find, create } from '../models/meeting.model.js';
+import mongoose from 'mongoose';
 
 export async function getMeetings(req, res) {
     try {
@@ -16,7 +17,14 @@ export async function setMeeting(req, res) {
         return res.status(400).json({ message: "Données manquantes" });
     } 
     try { 
-        const attendees = req.body.attendees.map(attendee => mongoose.Types.ObjectId(attendee));
+        
+        let attendees = [];
+        if (Array.isArray(req.body.attendees)) {
+            attendees = req.body.attendees.map(attendee => new mongoose.Types.ObjectId(attendee));
+        } else {
+            return res.status(400).json({ message: "Les participants doivent être au moins deux (02)." });
+        }
+
         const meeting = await create({
                 title: req.body.title,
                 content: req.body.content,

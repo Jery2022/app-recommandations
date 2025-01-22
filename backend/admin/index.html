@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace d'Administration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="userSection">
+        <h1>Espace d'Administration des Utilisateurs</h1>
+        <form id="userForm">
+            <input type="hidden" id="userId">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" required>
+            <label for="email">Email :</label>
+            <input type="email" id="email" required>
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" required>
+            <button type="submit">Ajouter / Mettre à jour</button>
+        </form>
+        <div id="message"></div>
+        <h2>Liste des Utilisateurs</h2>
+        <ul id="userList"></ul>
+    </div>
+    <div id="recommendationSection"></div>
+        <h1>Espace d'Administration des Recommandations</h1>
+        <form id="recommendationForm">
+            <input type="hidden" id="recommendationId">
+            <label for="content">Contenu :</label>
+            <textarea id="content" required></textarea>
+            
+            <label for="meeting">Réunion :</label>
+            <input type="text" id="meeting" required>
+            
+            <label for="assignedTo">Assigné à :</label>
+            <input type="text" id="assignedTo">
+            
+            <label for="status">Statut :</label>
+            <select id="status">
+                <option value="en attente">En attente</option>
+                <option value="en cours">En cours</option>
+                <option value="terminée">Terminée</option>
+            </select>
+            <button type="submit">Ajouter / Mettre à jour</button>
+        </form>
+
+        <div id="message"></div>
+        <h2>Liste des Recommandations</h2>
+        <div id="tableContainer"></div>
+        <ul id="recommendationList"></ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

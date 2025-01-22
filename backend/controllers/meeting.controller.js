@@ -12,7 +12,6 @@ export async function getMeetings(req, res) {
 }
 
 export async function setMeeting(req, res) {
-   // console.log(req.body);
     if (!req.body.title || !req.body.date || !req.body.location) {
         return res.status(400).json({ message: "Données manquantes" });
     } 

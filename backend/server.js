@@ -2,6 +2,7 @@ import express from 'express';
 //import postRoutes from './routes/post.routes.js';
 import meetingRoutes from './routes/meeting.routes.js';
 import userRoutes from './routes/user.routes.js';
+import recommendationRoutes from './routes/recommendation.routes.js';
 import connectDb from './config/db.js';
 import dotenv from 'dotenv';
 
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", userRoutes);
 //app.use("/api/post", postRoutes);
 app.use("/api/meetings", meetingRoutes);
+app.use("/api/recommendations", recommendationRoutes);
 
 // lancer le serveur
 app.listen(port, () => {

@@ -1,4 +1,5 @@
 import express from 'express';
+import cors  from 'cors';
 //import postRoutes from './routes/post.routes.js';
 import meetingRoutes from './routes/meeting.routes.js';
 import userRoutes from './routes/user.routes.js';
@@ -14,7 +15,8 @@ const app = express(); // initialisation de l'application express
 
 connectDb(); // Connexion à la base de données 
 
-
+// Utiliser le middleware cors
+app.use(cors());
 
 // middleware qui permet de traiter les données de la Request
 app.use(express.json());

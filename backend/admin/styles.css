@@ -1,6 +1,41 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
+    max-height: 100vh;
+}
+
+header {
+    z-index: 99;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+nav {
+    height: 15vh;
+    background-color: #F1C864;
+    padding: 10px 15px;
+
+}
+
+main {
+    margin-top: 100px;
+}
+
+aside{
+    width: 100%;
+}
+
+.form-section {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+footer {
+    height: 30vh;
 }
 
 h1, h2 {
